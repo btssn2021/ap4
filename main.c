@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
+#include <time.h>
 
 int main() {
     /************************menu************************/
-    int saisie=0;
+    /*int saisie=0;
     float montant,solde=0;
     while(true) {
         printf("\n1-créditer\n");
@@ -11,7 +13,7 @@ int main() {
         printf("Votre choix?");
         scanf("%d", &saisie);
         /*******************debit credit**********************/
-        switch (saisie) {
+        /*switch (saisie) {
 
 
             case 1:
@@ -41,6 +43,21 @@ int main() {
         }
 
         printf("\nVotre solde est %0.2f euros", solde);
+    }*/
+
+        int de1 = 0, de2 = 0;
+        srand(time(NULL));
+    while(true) {
+        de1 = (rand() % 100) + 1;
+        de2 = (rand() % 100) + 1;
+        printf("de1 %d\n", de1);
+        printf("de2 %d\n", de2);
+        if (de1 == de2) {
+            printf("Gagné\n");
+            break;
+        } else {
+            printf("Perdu\n");
+        }
     }
     return 0;
 }
