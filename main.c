@@ -2,62 +2,67 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <time.h>
-
+/****************************définition des protoypes de fonction***************************/
+int menu();
+void crediter(float);
+void debiter(float);
+void afficherSolde();
+float saisirMontant();
+float solde; //variable globale
 int main() {
-    /************************menu************************/
-    /*int saisie=0;
-    float montant,solde=0;
     while(true) {
+        switch (menu()) {
+            case 1:
+                crediter(saisirMontant());
+                break;
+            case 2:
+                debiter(saisirMontant());
+                break;
+            default:
+                printf("Saisie invalide");
+
+
+        }
+        afficherSolde();
+    }
+}
+    int menu ()
+    {
+        int saisie=0;
         printf("\n1-créditer\n");
         printf("2-débiter\n");
         printf("Votre choix?");
         scanf("%d", &saisie);
-        /*******************debit credit**********************/
-        /*switch (saisie) {
+        return saisie;
+    }
 
+    void crediter(float montant)
+    {
+        solde += montant;
+        printf("\nVous avez crédité votre compte de %0.2f euros", montant);
+    }
 
-            case 1:
-                printf("De quel montant voulez créditer?");
-                scanf("%f", &montant);
-                solde += montant;
-                printf("\nVous avez crédité votre compte de %0.2f euros", montant);
-                break;
+    void debiter(float montant)
+    {
 
-
-            case 2:
-                printf("De quel montant voulez débiter?");
-                scanf("%f", &montant);
-                if ((solde - montant) < 0) {
-                    printf("Solde insuffisant");
-                } else {
-                    solde -= montant;
-                    printf("\nVous avez débité votre compte de %0.2f euros", montant);
-                }
-                break;
-
-            default:
-                printf("Saisie incorrecte veuillez recommencer");
-                scanf("%*[^\n]"); //vide le scanf
-                break;
-
-        }
-
-        printf("\nVotre solde est %0.2f euros", solde);
-    }*/
-
-        int de1 = 0, de2 = 0;
-        srand(time(NULL));
-    while(true) {
-        de1 = (rand() % 100) + 1;
-        de2 = (rand() % 100) + 1;
-        printf("de1 %d\n", de1);
-        printf("de2 %d\n", de2);
-        if (de1 == de2) {
-            printf("Gagné\n");
-            break;
+        if ((solde - montant) < 0) {
+            printf("Solde insuffisant");
         } else {
-            printf("Perdu\n");
+            solde -= montant;
+            printf("\nVous avez débité votre compte de %0.2f euros", montant);
         }
     }
-    return 0;
-}
+
+    void afficherSolde()
+    {
+        printf("\nVotre solde est %0.2f euros", solde);
+    }
+
+    float saisirMontant()
+    {   float montant=0;
+        printf("Veuillez saisir un montant");
+        scanf("%f",&montant);
+        return montant;
+    }
+
+
